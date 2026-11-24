@@ -1,4 +1,22 @@
 
+/* =====================================
+   BILIM.HUB — PROFESSIONAL DESIGN
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --navy: #102c55;
+    --blue: #2463eb;
+    --light-blue: #edf4ff;
+    --text: #172b4d;
+    --muted: #718096;
+    --background: #f4f7fc;
+    --white: #ffffff;
+    --border: #e5eaf2;
+    --shadow: 0 8px 30px rgba(22, 45, 85, 0.07);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,198 +24,911 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f1f5ff;
-    color: #172554;
-    min-height: 100vh;
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
 }
 
-.header {
-    background: #ffffff;
-    padding: 22px 15px;
-    text-align: center;
-    border-bottom: 3px solid #3157d5;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
-}
-
-.header h1 {
-    color: #2447bd;
-    font-size: 32px;
-    margin-bottom: 6px;
-}
-
-.header p {
-    color: #64748b;
-    font-size: 15px;
-}
-
-.container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.panel {
-    width: 100%;
-    background: white;
-    padding: 35px 25px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
-}
-
-.panel h2 {
-    color: #3157d5;
-    font-size: 27px;
-    margin-bottom: 15px;
-}
-
-.panel h3 {
-    margin: 25px 0 18px;
-    font-size: 18px;
-}
-
-.subtitle {
-    color: #64748b;
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
-
-.classes {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
+button, input {
+    font: inherit;
 }
 
 button {
-    background: white;
-    color: #3157d5;
-    border: 1px solid #d5dfff;
-    padding: 14px 22px;
-    border-radius: 12px;
-    font-size: 15px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
-button:hover {
-    background: #3157d5;
-    color: white;
-    transform: translateY(-2px);
+.hidden {
+    display: none !important;
 }
 
-.primary-button {
-    background: #2949bd;
-    color: white;
-    border: none;
-    font-weight: bold;
-    margin: 15px 0 10px;
-}
+/* =====================================
+   HEADER
+===================================== */
 
-.primary-button:hover {
-    background: #193795;
-}
-
-#lessonContent {
+.header {
     width: 100%;
-    margin: 25px auto 0;
-    text-align: left;
+    padding: 24px 6%;
+    background: white;
+    border-bottom: 1px solid var(--border);
 }
 
-#lessonContent h2 {
+.logo {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -1.5px;
+}
+
+.logo span,
+.main-logo span,
+.login-logo span,
+.admin-brand span {
+    color: var(--blue);
+}
+
+/* =====================================
+   HOME PAGE
+===================================== */
+
+.main-container {
+    min-height: 100vh;
+}
+
+.home-section {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 30px 20px;
     text-align: center;
+}
+
+.main-logo {
+    font-size: 68px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -3px;
+    margin-bottom: 30px;
+}
+
+.welcome-text h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.welcome-text p {
+    color: var(--muted);
+}
+
+.role-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 45px;
+    flex-wrap: wrap;
+}
+
+.role-card {
+    width: 350px;
+    min-height: 320px;
+    padding: 35px 25px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.role-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(22, 45, 85, 0.13);
+    border-color: #b9d0ff;
+}
+
+.sticker {
+    font-size: 68px;
+    margin-bottom: 20px;
+}
+
+.role-card h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.role-card p {
+    color: var(--muted);
     margin-bottom: 25px;
 }
 
-.lesson-part {
-    background: #f3f6ff;
-    padding: 22px;
-    margin: 18px 0;
-    border-radius: 14px;
-    line-height: 1.8;
-    overflow-wrap: break-word;
+.role-card button {
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 25px;
+    font-weight: 700;
 }
 
-.lesson-part h3 {
-    color: #3157d5;
-    margin: 0 0 15px;
-    font-size: 18px;
+.teacher-card button {
+    background: var(--blue);
 }
 
-.lesson-part p {
-    color: #475569;
-    margin: 8px 0;
+/* =====================================
+   LOGIN
+===================================== */
+
+.login-section {
+    min-height: 80vh;
+    padding: 35px 20px;
 }
 
-.lesson-part li {
-    margin: 8px 0 8px 22px;
+.back-button {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--navy);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
 }
 
-footer {
+.login-box {
+    width: 100%;
+    max-width: 440px;
+    background: white;
+    margin: 35px auto;
+    padding: 40px;
+    border-radius: 22px;
+    box-shadow: var(--shadow);
     text-align: center;
-    padding: 25px 15px;
-    color: #64748b;
+}
+
+.login-logo {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--navy);
+}
+
+.login-sticker {
+    font-size: 65px;
+    margin: 25px 0 15px;
+}
+
+.login-box h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.login-description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.login-box form {
+    text-align: left;
+}
+
+.login-box label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 17px 0 8px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    background: #fbfcff;
+}
+
+.login-box input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(36, 99, 235, 0.1);
+}
+
+.login-button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.login-button:hover {
+    background: var(--blue);
+}
+
+.login-message {
+    margin-top: 15px;
+    color: #d33;
     font-size: 14px;
 }
 
-@media (max-width: 600px) {
-    .container {
-        margin: 20px auto;
-        padding: 0 12px;
-    }
+/* =====================================
+   STUDENT CABINET
+===================================== */
 
-    .panel {
-        padding: 25px 16px;
-    }
-
-    .panel h2 {
-        font-size: 23px;
-    }
-
-    .classes {
-        gap: 9px;
-    }
-
-    button {
-        padding: 12px 15px;
-        font-size: 14px;
-    }
-
-    .lesson-part {
-        padding: 16px;
-    }
+.cabinet-section {
+    min-height: 100vh;
+    background: var(--background);
 }
 
-.exercise {
+.cabinet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 6%;
     background: white;
-    padding: 18px;
-    margin: 15px 0;
-    border-radius: 12px;
-    border: 1px solid #dce5ff;
+    border-bottom: 1px solid var(--border);
 }
 
-.exercise input {
-    width: 150px;
-    max-width: 100%;
-    padding: 11px;
-    margin: 10px 8px 10px 0;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 15px;
+.cabinet-actions {
+    display: flex;
+    gap: 12px;
 }
 
-.exercise button {
-    margin: 5px 4px;
+.profile-button,
+.logout-button {
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    background: white;
 }
 
-.exercise p {
+.logout-button {
+    background: #fff1f1;
+    color: #d83b3b;
+    border-color: #ffe0e0;
+}
+
+.cabinet-content {
+    max-width: 1150px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.cabinet-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(120deg, #102c55, #2463eb);
+    color: white;
+    border-radius: 22px;
+    padding: 40px;
+}
+
+.cabinet-welcome p {
+    margin-top: 10px;
+    color: #dce8ff;
+}
+
+.cabinet-sticker {
+    font-size: 75px;
+}
+
+.student-info-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+.student-avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: var(--light-blue);
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+}
+
+.student-info-card p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.cabinet-heading {
+    margin: 40px 0 20px;
+}
+
+.cabinet-heading p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.student-lessons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.lesson-placeholder {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+.lesson-placeholder div {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.lesson-placeholder p {
+    color: var(--muted);
+    margin-top: 10px;
     line-height: 1.6;
 }
 
-#result {
-    color: #3157d5;
+/* =====================================
+   ADMINISTRATOR DASHBOARD
+===================================== */
+
+.admin-dashboard {
+    min-height: 100vh;
+    display: flex;
+    background: #f4f7fc;
+}
+
+/* LEFT SIDEBAR */
+
+.admin-sidebar {
+    width: 265px;
+    min-width: 265px;
+    min-height: 100vh;
+    background: #102746;
+    color: white;
+    padding: 30px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-brand {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    padding: 5px 12px 45px;
+    color: white;
+}
+
+.admin-brand span {
+    color: #65a0ff;
+}
+
+.admin-menu-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #8296b2;
+    padding: 0 14px;
+    margin-bottom: 15px;
+}
+
+.admin-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px;
+    border-radius: 11px;
+    color: #c4d1e3;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.admin-nav-item span {
+    font-size: 19px;
+}
+
+.admin-nav-item:hover,
+.admin-nav-item.active {
+    background: #244675;
+    color: white;
+}
+
+.admin-sidebar-bottom {
+    margin-top: auto;
+    padding-top: 35px;
+}
+
+.admin-sidebar-logout {
+    width: 100%;
     margin-top: 20px;
+    padding: 14px;
+    border: 1px solid #38516f;
+    border-radius: 10px;
+    background: transparent;
+    color: #ffd5d5;
+    font-weight: 600;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.admin-sidebar-logout:hover {
+    background: #9e3333;
+    color: white;
+}
+
+/* MAIN AREA */
+
+.admin-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-topbar {
+    min-height: 95px;
+    padding: 20px 40px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-breadcrumb {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 7px;
+}
+
+.admin-topbar h2 {
+    font-size: 21px;
+    color: var(--navy);
+}
+
+.admin-top-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-top-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #e9f1ff;
+    font-size: 23px;
+}
+
+.admin-top-profile strong {
+    display: block;
+    font-size: 13px;
+}
+
+.admin-top-profile span {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+/* CONTENT */
+
+.admin-content {
+    max-width: 1500px;
+    padding: 35px 40px;
+    margin: auto;
+}
+
+.admin-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    min-height: 210px;
+    padding: 40px;
+    border-radius: 20px;
+    color: white;
+    background: linear-gradient(115deg, #102c55, #245fd5);
+    box-shadow: 0 12px 30px rgba(25, 75, 160, 0.15);
+}
+
+.admin-hero-label {
+    display: inline-block;
+    color: #b8d3ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 17px;
+}
+
+.admin-hero h1 {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.admin-hero p {
+    color: #d8e5ff;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.admin-hero-icon {
+    font-size: 90px;
+    padding: 20px;
+}
+
+/* STATISTICS */
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.admin-stat-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 23px;
+    box-shadow: var(--shadow);
+    transition: 0.25s;
+}
+
+.admin-stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(22, 45, 85, 0.1);
+}
+
+.admin-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.admin-stat-icon.blue {
+    background: #e9f1ff;
+}
+
+.admin-stat-icon.purple {
+    background: #f0eaff;
+}
+
+.admin-stat-icon.orange {
+    background: #fff1df;
+}
+
+.admin-stat-icon.green {
+    background: #e2f8ed;
+}
+
+.admin-stat-card p {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.admin-stat-card h2 {
+    font-size: 34px;
+    color: var(--navy);
+    margin: 10px 0;
+}
+
+.admin-stat-card span {
+    color: #9aa7b8;
+    font-size: 11px;
+}
+
+/* QUICK ACTIONS */
+
+.admin-section-block {
+    margin-top: 40px;
+    scroll-margin-top: 25px;
+}
+
+.admin-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.admin-section-heading h2 {
+    font-size: 21px;
+    color: var(--navy);
+}
+
+.admin-section-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.admin-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.admin-quick-card {
+    padding: 25px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    box-shadow: var(--shadow);
+    transition: 0.25s;
+    scroll-margin-top: 25px;
+}
+
+.admin-quick-card:hover {
+    transform: translateY(-5px);
+    border-color: #b7ceff;
+    box-shadow: 0 15px 35px rgba(22, 45, 85, 0.1);
+}
+
+.admin-quick-icon {
+    width: 53px;
+    height: 53px;
+    display: grid;
+    place-items: center;
+    background: #edf3ff;
+    border-radius: 14px;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.admin-quick-card h3 {
+    font-size: 17px;
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.admin-quick-card p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+    min-height: 42px;
+}
+
+.admin-quick-card span {
+    display: inline-block;
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 18px;
+}
+
+/* INFORMATION PANEL */
+
+.admin-info-panel {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.admin-info-icon {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    background: #fff4dc;
+    border-radius: 14px;
+    font-size: 27px;
+    flex-shrink: 0;
+}
+
+.admin-info-panel h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.admin-info-panel p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.admin-footer {
+    padding: 35px 0 10px;
     text-align: center;
+    color: #9aa7b8;
+    font-size: 11px;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 1100px) {
+    .admin-stats,
+    .admin-quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-sidebar {
+        width: 225px;
+        min-width: 225px;
+    }
+
+    .admin-content {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 700px) {
+    .header {
+        padding: 18px 20px;
+    }
+
+    .logo {
+        font-size: 27px;
+    }
+
+    .main-logo {
+        font-size: 48px;
+    }
+
+    .welcome-text h2 {
+        font-size: 24px;
+    }
+
+    .role-card {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .login-box {
+        padding: 28px 22px;
+    }
+
+    .cabinet-header {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .cabinet-content {
+        margin-top: 20px;
+    }
+
+    .cabinet-welcome {
+        padding: 25px;
+    }
+
+    .cabinet-welcome h1 {
+        font-size: 23px;
+    }
+
+    .cabinet-sticker {
+        font-size: 48px;
+    }
+
+    .admin-dashboard {
+        display: block;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .admin-brand {
+        padding: 5px 10px 18px;
+    }
+
+    .admin-menu-title {
+        display: none;
+    }
+
+    .admin-navigation {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .admin-nav-item {
+        flex-shrink: 0;
+        padding: 11px;
+        font-size: 12px;
+    }
+
+    .admin-sidebar-bottom {
+        display: none;
+    }
+
+    .admin-topbar {
+        padding: 18px;
+        flex-wrap: wrap;
+    }
+
+    .admin-topbar h2 {
+        font-size: 17px;
+    }
+
+    .admin-content {
+        padding: 18px;
+    }
+
+    .admin-hero {
+        padding: 25px;
+        min-height: 175px;
+    }
+
+    .admin-hero h1 {
+        font-size: 27px;
+    }
+
+    .admin-hero p {
+        font-size: 12px;
+    }
+
+    .admin-hero-icon {
+        font-size: 50px;
+        padding: 5px;
+    }
+
+    .admin-stats {
+        gap: 12px;
+    }
+
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .admin-stat-card h2 {
+        font-size: 27px;
+    }
+
+    .admin-quick-grid {
+        gap: 12px;
+    }
+
+    .admin-quick-card {
+        padding: 17px;
+    }
+
+    .admin-quick-card h3 {
+        font-size: 14px;
+    }
+
+    .admin-quick-card p {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 380px) {
+    .admin-stats,
+    .admin-quick-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-top-profile span {
+        display: none;
+    }
 }
