@@ -2,595 +2,236 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#102c55">
-    <meta name="description" content="Bilim.hub ta'lim platformasi">
-    <title>Bilim.hub — Ta'lim platformasi</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        .student-create-panel {
-            background: #fff;
-            border: 1px solid #e6ebf2;
-            border-radius: 20px;
-            padding: 26px;
-            box-shadow: 0 10px 30px rgba(16, 44, 85, .06);
-        }
-
-        .student-create-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 22px;
-        }
-
-        .student-create-field {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .student-create-field label {
-            color: #263b59;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .student-create-field input,
-        .student-create-field select {
-            width: 100%;
-            min-height: 48px;
-            border: 1px solid #dce4ef;
-            border-radius: 11px;
-            padding: 0 14px;
-            background: #fbfcfe;
-            color: #172b4d;
-            font: inherit;
-            outline: none;
-        }
-
-        .student-create-field input:focus,
-        .student-create-field select:focus {
-            border-color: #3478e5;
-            box-shadow: 0 0 0 3px rgba(52,120,229,.12);
-        }
-
-        .student-create-note {
-            margin-top: 18px;
-            padding: 13px 15px;
-            border-radius: 12px;
-            background: #f2f6fc;
-            color: #536782;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .student-create-submit {
-            margin-top: 20px;
-            min-height: 48px;
-            padding: 0 22px;
-            border: 0;
-            border-radius: 11px;
-            background: #174b91;
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            opacity: 1;
-        }
-
-        .student-create-submit:hover {
-            background: #2463b8;
-        }
-
-        .student-create-submit:disabled {
-            cursor: wait;
-            opacity: .65;
-        }
-
-        @media (max-width: 650px) {
-            .student-create-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .student-create-panel {
-                padding: 18px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b35">
+  <title>Bilim.hub — Ta'lim platformasi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- BOSH SAHIFA -->
-    <header class="header">
-        <div class="logo">Bilim<span>.hub</span></div>
+  <!-- HOME -->
+  <section id="homeSection" class="screen home-screen">
+    <header class="topbar">
+      <a class="brand" href="#" onclick="showSection('homeSection');return false;">
+        <span class="brand-icon">B</span> bilim<span class="blue-dot">.hub</span>
+      </a>
+      <span class="top-note">TA'LIM PLATFORMASI</span>
     </header>
 
-    <main class="main-container">
-
-        <!-- ASOSIY OYNA -->
-        <section id="homeSection" class="home-section">
-
-            <h1 class="main-logo">Bilim<span>.hub</span></h1>
-
-            <div class="welcome-text">
-                <h2>Platformaga kirish</h2>
-                <p>O'zingizga mos yo'nalishni tanlang</p>
-            </div>
-
-            <div class="role-container">
-
-                <div class="role-card student-card"
-                     onclick="selectRole('student')">
-                    <div class="sticker">🎓</div>
-                    <h3>O'quvchi</h3>
-                    <p>O'quvchi kabinetiga kirish</p>
-                    <button type="button">Tanlash →</button>
-                </div>
-
-                <div class="role-card teacher-card"
-                     onclick="selectRole('teacher')">
-                    <div class="sticker">👨‍🏫</div>
-                    <h3>Ustoz</h3>
-                    <p>Ustoz kabinetiga kirish</p>
-                    <button type="button">Tanlash →</button>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- LOGIN OYNASI -->
-        <section id="loginSection" class="login-section hidden">
-
-            <button type="button"
-                    class="back-button"
-                    onclick="goHome()">
-                ← Orqaga
-            </button>
-
-            <div class="login-box">
-
-                <div class="login-logo">
-                    Bilim<span>.hub</span>
-                </div>
-
-                <div class="login-sticker" id="loginSticker">🎓</div>
-
-                <h2 id="loginTitle">O'quvchi kabineti</h2>
-
-                <p class="login-description">
-                    Davom etish uchun login va parolingizni kiriting
-                </p>
-
-                <form id="loginForm">
-
-                    <label for="username">Login yoki email</label>
-                    <input
-                        type="text"
-                        id="username"
-                        placeholder="Email manzilingizni kiriting"
-                        required
-                    >
-
-                    <label for="password">Parol</label>
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Parolingizni kiriting"
-                        required
-                    >
-
-                    <button type="submit" class="login-button">
-                        Kabinetga kirish →
-                    </button>
-
-                </form>
-
-                <p id="loginMessage" class="login-message"></p>
-
-            </div>
-        </section>
-
-
-        <!-- O'QUVCHI KABINETI -->
-        <section id="studentCabinet" class="cabinet-section hidden">
-
-            <header class="cabinet-header">
-
-                <div class="logo">Bilim<span>.hub</span></div>
-
-                <div class="cabinet-actions">
-                    <button type="button" class="profile-button">
-                        👤 Profil
-                    </button>
-
-                    <button type="button"
-                            class="logout-button"
-                            onclick="goHome()">
-                        Chiqish ↗
-                    </button>
-                </div>
-
-            </header>
-
-            <div class="cabinet-content">
-
-                <div class="cabinet-welcome">
-                    <div>
-                        <h1>O'quvchi kabineti</h1>
-                        <p>Bilim olish sari yangi qadam!</p>
-                    </div>
-                    <div class="cabinet-sticker">🎓</div>
-                </div>
-
-                <div class="student-info-card">
-                    <div class="student-avatar">👤</div>
-                    <div>
-                        <h2 id="studentName">O'quvchi</h2>
-                        <p id="studentGrade">Sinf: hali belgilanmagan</p>
-                    </div>
-                </div>
-
-                <div class="cabinet-heading">
-                    <h2>Mening darslarim</h2>
-                    <p>Bu yerda sizning sinfingizga mos darslar joylashadi.</p>
-                </div>
-
-                <div class="student-lessons">
-                    <div class="lesson-placeholder">
-                        <div>📚</div>
-                        <h3>Darslar</h3>
-                        <p>O'quv materiallari tez orada joylashtiriladi.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ADMINISTRATOR KABINETI -->
-        <section id="adminCabinet" class="admin-dashboard hidden">
-
-            <!-- CHAP MENYU -->
-            <aside class="admin-sidebar">
-
-                <div class="admin-brand">
-                    Bilim<span>.hub</span>
-                </div>
-
-                <div class="admin-menu-title">ASOSIY MENYU</div>
-
-                <nav class="admin-navigation">
-
-                    <a href="#adminOverview"
-                       class="admin-nav-item active">
-                        <span>▦</span> Bosh sahifa
-                    </a>
-
-                    <a href="#adminStudents"
-                       class="admin-nav-item">
-                        <span>🎓</span> O'quvchilar
-                    </a>
-
-                    <a href="#adminTeachersCard"
-                       class="admin-nav-item">
-                        <span>👨‍🏫</span> Ustozlar
-                    </a>
-
-                    <a href="#adminSubjectsCard"
-                       class="admin-nav-item">
-                        <span>📚</span> Fanlar
-                    </a>
-
-                    <a href="#adminTestsCard"
-                       class="admin-nav-item">
-                        <span>📝</span> Testlar
-                    </a>
-
-                </nav>
-
-                <div class="admin-sidebar-bottom">
-
-                    <div class="admin-menu-title">TIZIM</div>
-
-                    <a href="#adminSettings"
-                       class="admin-nav-item">
-                        <span>⚙️</span> Sozlamalar
-                    </a>
-
-                    <button type="button"
-                            class="admin-sidebar-logout"
-                            onclick="goHome()">
-                        ↪ Chiqish
-                    </button>
-
-                </div>
-
-            </aside>
-
-
-            <!-- ADMIN ASOSIY QISM -->
-            <div class="admin-main">
-
-                <header class="admin-topbar">
-
-                    <div>
-                        <p class="admin-breadcrumb">
-                            Bilim.hub / Boshqaruv
-                        </p>
-                        <h2>Administrator paneli</h2>
-                    </div>
-
-                    <div class="admin-top-profile">
-                        <div class="admin-top-avatar">👤</div>
-                        <div>
-                            <strong>Administrator</strong>
-                            <span>Platforma boshqaruvchisi</span>
-                        </div>
-                    </div>
-
-                </header>
-
-
-                <div class="admin-content">
-
-                    <!-- XUSH KELIBSIZ -->
-                    <section class="admin-hero" id="adminOverview">
-
-                        <div>
-                            <span class="admin-hero-label">
-                                BOSHQARUV PANELI
-                            </span>
-
-                            <h1>Xush kelibsiz!</h1>
-
-                            <p>
-                                Bilim.hub ta'lim platformasini
-                                shu yerdan boshqaring.
-                            </p>
-                        </div>
-
-                        <div class="admin-hero-icon">🚀</div>
-
-                    </section>
-
-
-                    <!-- STATISTIKA -->
-                    <section class="admin-stats">
-
-                        <div class="admin-stat-card">
-                            <div class="admin-stat-icon blue">🎓</div>
-                            <p>Jami o'quvchilar</p>
-                            <h2 id="totalStudents">0</h2>
-                            <span>Platformadagi o'quvchilar</span>
-                        </div>
-
-                        <div class="admin-stat-card">
-                            <div class="admin-stat-icon purple">👨‍🏫</div>
-                            <p>Jami ustozlar</p>
-                            <h2 id="totalTeachers">0</h2>
-                            <span>Platformadagi ustozlar</span>
-                        </div>
-
-                        <div class="admin-stat-card">
-                            <div class="admin-stat-icon orange">📚</div>
-                            <p>Fanlar</p>
-                            <h2 id="totalSubjects">2</h2>
-                            <span>Matematika va ingliz tili</span>
-                        </div>
-
-                        <div class="admin-stat-card">
-                            <div class="admin-stat-icon green">🏫</div>
-                            <p>Sinflar</p>
-                            <h2>7</h2>
-                            <span>5–11-sinflar</span>
-                        </div>
-
-                    </section>
-
-
-                    <!-- TEZKOR BOSHQARUV -->
-                    <section class="admin-section-block">
-
-                        <div class="admin-section-heading">
-                            <div>
-                                <h2>Tezkor boshqaruv</h2>
-                                <p>Platformaning asosiy bo'limlari</p>
-                            </div>
-                        </div>
-
-                        <div class="admin-quick-grid">
-
-                            <div class="admin-quick-card"
-                                 id="adminStudentsCard">
-                                <div class="admin-quick-icon">🎓</div>
-                                <h3>O'quvchilar</h3>
-                                <p>
-                                    O'quvchilar akkauntlari va ma'lumotlari
-                                </p>
-                                <span>O'quvchilar bo'limi →</span>
-                            </div>
-
-                            <div class="admin-quick-card"
-                                 id="adminTeachersCard">
-                                <div class="admin-quick-icon">👨‍🏫</div>
-                                <h3>Ustozlar</h3>
-                                <p>
-                                    Ustozlar akkauntlarini boshqarish
-                                </p>
-                                <span>Ustozlar bo'limi →</span>
-                            </div>
-
-                            <div class="admin-quick-card"
-                                 id="adminSubjectsCard">
-                                <div class="admin-quick-icon">📚</div>
-                                <h3>Fanlar</h3>
-                                <p>
-                                    Matematika va ingliz tili darslari
-                                </p>
-                                <span>Fanlar bo'limi →</span>
-                            </div>
-
-                            <div class="admin-quick-card"
-                                 id="adminTestsCard">
-                                <div class="admin-quick-icon">📝</div>
-                                <h3>Testlar</h3>
-                                <p>
-                                    Bilimni tekshiruvchi topshiriqlar
-                                </p>
-                                <span>Testlar bo'limi →</span>
-                            </div>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- O'QUVCHI QO'SHISH -->
-                    <section class="admin-section-block"
-                             id="adminStudents">
-
-                        <div class="admin-section-heading">
-                            <div>
-                                <h2>O'quvchi qo'shish</h2>
-                                <p>
-                                    Yangi o'quvchi akkauntini yaratish
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="student-create-panel">
-
-                            <form id="addStudentForm">
-
-                                <div class="student-create-grid">
-
-                                    <div class="student-create-field">
-                                        <label for="newStudentName">
-                                            Ism va familiya
-                                        </label>
-                                        <input
-                                            id="newStudentName"
-                                            type="text"
-                                            placeholder="Masalan: Ali Valiyev"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="student-create-field">
-                                        <label for="newStudentGrade">
-                                            Sinf
-                                        </label>
-                                        <select
-                                            id="newStudentGrade"
-                                            required
-                                        >
-                                            <option value="">
-                                                Sinfni tanlang
-                                            </option>
-                                            <option value="5">5-sinf</option>
-                                            <option value="6">6-sinf</option>
-                                            <option value="7">7-sinf</option>
-                                            <option value="8">8-sinf</option>
-                                            <option value="9">9-sinf</option>
-                                            <option value="10">10-sinf</option>
-                                            <option value="11">11-sinf</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="student-create-field">
-                                        <label for="newStudentUsername">
-                                            Login (email)
-                                        </label>
-                                        <input
-                                            id="newStudentUsername"
-                                            type="email"
-                                            placeholder="oquvchi@example.com"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="student-create-field">
-                                        <label for="newStudentPassword">
-                                            Parol
-                                        </label>
-                                        <input
-                                            id="newStudentPassword"
-                                            type="password"
-                                            placeholder="Kamida 8 ta belgi"
-                                            minlength="8"
-                                            required
-                                        >
-                                    </div>
-
-                                </div>
-
-                                <div class="student-create-note">
-                                    Login uchun haqiqiy email manzilini kiriting.
-                                    Parol kamida 8 ta belgidan iborat bo'lishi kerak.
-                                </div>
-
-                                <button
-                                    class="student-create-submit"
-                                    type="button"
-                                >
-                                    O'quvchini saqlash
-                                </button>
-
-                            </form>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- PLATFORMА HAQIDA -->
-                    <section class="admin-section-block"
-                             id="adminSettings">
-
-                        <div class="admin-section-heading">
-                            <div>
-                                <h2>Platforma haqida</h2>
-                                <p>Bilim.hub boshqaruv tizimi</p>
-                            </div>
-                        </div>
-
-                        <div class="admin-info-panel">
-
-                            <div class="admin-info-icon">💡</div>
-
-                            <div>
-                                <h3>Ta'limni bir joydan boshqaring</h3>
-                                <p>
-                                    O'quvchilar, ustozlar, fanlar va
-                                    testlarni yagona boshqaruv paneli
-                                    orqali nazorat qiling.
-                                </p>
-                            </div>
-
-                        </div>
-
-                    </section>
-
-
-                    <footer class="admin-footer">
-                        © 2026 Bilim.hub. Barcha huquqlar himoyalangan.
-                    </footer>
-
-                </div>
-            </div>
-
-        </section>
-
+    <main class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> BILIM OLISHNING YANGI MANZILI</span>
+        <h1>Bilim bilan<br><span>kelajak sari.</span></h1>
+        <p>O'rganish, rivojlanish va natijalarga erishish uchun barcha imkoniyatlar bitta platformada.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="selectRole('student')">O'quvchi sifatida kirish <b>→</b></button>
+          <button class="btn btn-light" onclick="selectRole('teacher')">Ustoz sifatida kirish</button>
+        </div>
+        <div class="trust-line">✓ Qulay ta'lim muhiti <span>·</span> Zamonaviy platforma</div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-orb"></div>
+        <div class="visual-card">
+          <div class="visual-top"><span class="visual-logo">B</span><span>BILIM.HUB</span><span class="visual-star">✦</span></div>
+          <div class="visual-book">▤</div>
+          <h3>Har kuni bir qadam oldinga</h3>
+          <p>Bilim — kelajak kaliti.</p>
+          <div class="progress"><span></span></div>
+          <div class="progress-label"><span>Rivojlanish sari</span><b>100%</b></div>
+        </div>
+        <div class="floating-tag tag-top">🎓 Ta'lim</div>
+        <div class="floating-tag tag-bottom">✦ Imkoniyatlar</div>
+      </div>
     </main>
+    <footer class="home-footer">© 2026 Bilim.hub <span>Bilim bilan kelajak sari.</span></footer>
+  </section>
 
+  <!-- LOGIN -->
+  <section id="loginSection" class="screen login-screen hidden">
+    <button class="back-link" onclick="showSection('homeSection')">← Bosh sahifa</button>
+    <div class="login-card">
+      <a class="brand login-brand" href="#" onclick="showSection('homeSection');return false;">
+        <span class="brand-icon">B</span> bilim<span class="blue-dot">.hub</span>
+      </a>
+      <div class="login-symbol" id="loginSticker">🎓</div>
+      <h1 id="loginTitle">O'quvchi kabineti</h1>
+      <p class="muted">Davom etish uchun login va parolingizni kiriting.</p>
+      <form id="loginForm">
+        <label for="username">Login / Email</label>
+        <input id="username" type="email" placeholder="email@example.com" autocomplete="username" required>
+        <label for="password">Parol</label>
+        <div class="password-field">
+          <input id="password" type="password" placeholder="Parolingiz" autocomplete="current-password" required>
+          <button type="button" id="passwordToggle" aria-label="Parolni ko'rsatish">◉</button>
+        </div>
+        <p id="loginMessage" class="form-message"></p>
+        <button class="btn btn-primary full-btn" type="submit">Kabinetga kirish <b>→</b></button>
+      </form>
+      <div class="login-bottom">Bilim.hub — sizning ta'lim makoningiz.</div>
+    </div>
+  </section>
 
-    <!-- SUPABASE VA JAVASCRIPT -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="script.js"></script>
+  <!-- STUDENT CABINET -->
+  <section id="studentCabinet" class="screen app-screen hidden">
+    <aside class="sidebar">
+      <a class="brand sidebar-brand" href="#"><span class="brand-icon">B</span> bilim<span class="blue-dot">.hub</span></a>
+      <div class="nav-caption">O'QUVCHI KABINETI</div>
+      <nav class="side-nav">
+        <button class="nav-link active" data-view="studentOverview">▦ <span>Bosh sahifa</span></button>
+        <button class="nav-link" data-view="studentLessons">▤ <span>Darslarim</span></button>
+        <button class="nav-link" data-view="studentSubjects">◈ <span>Fanlar</span></button>
+        <button class="nav-link" data-view="studentResults">◎ <span>Natijalarim</span></button>
+        <button class="nav-link" data-view="studentProfile">♙ <span>Profilim</span></button>
+      </nav>
+      <button class="logout-button" onclick="goHome()">↪ <span>Chiqish</span></button>
+    </aside>
 
+    <main class="app-main">
+      <header class="app-header">
+        <div><small>O'QUVCHI KABINETI</small><h2 id="studentPageTitle">Bosh sahifa</h2></div>
+        <div class="account-chip"><span class="account-avatar">🎓</span><span id="topStudentName">O'quvchi</span></div>
+      </header>
+
+      <div class="view-panel active" id="studentOverview">
+        <div class="welcome-banner">
+          <div><small>BILIM.HUB</small><h2>Xush kelibsiz, <span id="studentFirstName">O'quvchi</span>!</h2><p>Bugun ham yangi bilimlar sari qadam tashlang.</p></div>
+          <div class="banner-art">✦</div>
+        </div>
+        <div class="section-title"><div><h3>Umumiy ko'rinish</h3><p>Ta'lim faoliyatingiz</p></div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon blue">♙</span><small>Sinfingiz</small><strong id="studentGrade">—</strong><p>O'quvchi ma'lumoti</p></article>
+          <article class="stat-card"><span class="stat-icon violet">◈</span><small>Fanlar</small><strong>—</strong><p>Fanlar bo'limi</p></article>
+          <article class="stat-card"><span class="stat-icon green">◎</span><small>Natijalar</small><strong>—</strong><p>O'zlashtirish</p></article>
+        </div>
+        <div class="info-panel"><h3>Bilim olishni davom ettiring</h3><p>Darslar va fanlar bo'limiga o'tib, o'quv materiallaringizni ko'rishingiz mumkin.</p></div>
+      </div>
+
+      <div class="view-panel hidden" id="studentLessons"><div class="content-card"><h3>Darslarim</h3><p>O'quv darslaringiz shu bo'limda joylashadi.</p></div></div>
+      <div class="view-panel hidden" id="studentSubjects"><div class="content-card"><h3>Fanlar</h3><p>Siz o'rganadigan fanlar shu yerda ko'rsatiladi.</p></div></div>
+      <div class="view-panel hidden" id="studentResults"><div class="content-card"><h3>Natijalarim</h3><p>Test va topshiriqlar natijalari shu yerda ko'rinadi.</p></div></div>
+      <div class="view-panel hidden" id="studentProfile">
+        <div class="content-card"><h3>Profilim</h3>
+          <div class="profile-row"><span>F.I.Sh.</span><strong id="studentName">O'quvchi</strong></div>
+          <div class="profile-row"><span>Sinf</span><strong id="studentProfileGrade">—</strong></div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- ADMIN CABINET -->
+  <section id="adminCabinet" class="screen app-screen hidden">
+    <aside class="sidebar">
+      <a class="brand sidebar-brand" href="#"><span class="brand-icon">B</span> bilim<span class="blue-dot">.hub</span></a>
+      <div class="nav-caption">BOSHQARUV PANELI</div>
+      <nav class="side-nav">
+        <button class="nav-link active" data-view="adminOverview">▦ <span>Bosh sahifa</span></button>
+        <button class="nav-link" data-view="adminStudents">♙ <span>O'quvchilar</span></button>
+        <button class="nav-link" data-view="adminTeachers">♧ <span>Ustozlar</span></button>
+        <button class="nav-link" data-view="adminSubjects">◈ <span>Fanlar</span></button>
+        <button class="nav-link" data-view="adminTests">▤ <span>Testlar</span></button>
+        <button class="nav-link" data-view="adminSettings">⚙ <span>Sozlamalar</span></button>
+      </nav>
+      <button class="logout-button" onclick="goHome()">↪ <span>Chiqish</span></button>
+    </aside>
+
+    <main class="app-main">
+      <header class="app-header">
+        <div><small>ADMINISTRATOR</small><h2 id="adminPageTitle">Bosh sahifa</h2></div>
+        <div class="account-chip"><span class="account-avatar">👨‍💼</span><span id="adminAccountName">Administrator</span></div>
+      </header>
+
+      <!-- ADMIN OVERVIEW -->
+      <div class="view-panel active" id="adminOverview">
+        <div class="welcome-banner admin-banner">
+          <div><small>BILIM.HUB BOSHQARUV</small><h2>Ta'lim jarayonini boshqaring.</h2><p>Platforma faoliyatini bir joydan nazorat qiling.</p></div>
+          <div class="banner-art">✦</div>
+        </div>
+        <div class="section-title"><div><h3>Platforma statistikasi</h3><p>Umumiy ko'rsatkichlar</p></div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon blue">♙</span><small>O'quvchilar</small><strong id="totalStudents">0</strong><p>Jami o'quvchilar</p></article>
+          <article class="stat-card"><span class="stat-icon violet">♧</span><small>Ustozlar</small><strong id="totalTeachers">0</strong><p>Jami ustozlar</p></article>
+          <article class="stat-card"><span class="stat-icon green">◈</span><small>Fanlar</small><strong id="totalSubjects">0</strong><p>Jami fanlar</p></article>
+        </div>
+        <div class="info-panel"><h3>Boshqaruv markazi</h3><p>Chap menyudan o'quvchilar, ustozlar va boshqa bo'limlarni tanlang.</p></div>
+      </div>
+
+      <!-- ADMIN STUDENTS -->
+      <div class="view-panel hidden" id="adminStudents">
+        <div class="students-intro">
+          <div><span class="eyebrow"><i></i> O'QUVCHILAR BAZASI</span><h2>Sinflar bo'yicha boshqaruv</h2><p>Kerakli sinfni tanlang va uning o'quvchilar ro'yxatini ko'ring.</p></div>
+          <div class="students-intro-icon">🎓</div>
+        </div>
+
+        <div class="section-title">
+          <div><h3>Sinflar</h3><p>5–11-sinflar bo'yicha o'quvchilar</p></div>
+          <button type="button" class="btn btn-light" onclick="loadStudentList()">↻ Yangilash</button>
+        </div>
+
+        <div id="studentList">
+          <p class="muted">Sinflar yuklanmoqda...</p>
+        </div>
+
+        <div class="content-card add-student-card">
+          <div class="section-title card-heading">
+            <div><span class="mini-label">YANGI AKKAUNT</span><h3>O'quvchi qo'shish</h3><p>O'quvchi ma'lumotlarini kiriting. Tanlangan sinfga avtomatik qo'shiladi.</p></div>
+            <span class="add-icon">＋</span>
+          </div>
+          <form id="addStudentForm" class="student-form">
+            <div class="field"><label for="newStudentName">O'quvchi F.I.Sh.</label><input id="newStudentName" type="text" placeholder="Ali Valiyev" required></div>
+            <div class="field"><label for="newStudentGrade">Sinf</label>
+              <select id="newStudentGrade" required>
+                <option value="">Sinfni tanlang</option>
+                <option value="5">5-sinf</option><option value="6">6-sinf</option><option value="7">7-sinf</option>
+                <option value="8">8-sinf</option><option value="9">9-sinf</option><option value="10">10-sinf</option><option value="11">11-sinf</option>
+              </select>
+            </div>
+            <div class="field"><label for="newStudentUsername">Login (email)</label><input id="newStudentUsername" type="email" placeholder="student@example.com" required></div>
+            <div class="field"><label for="newStudentPassword">Parol</label><input id="newStudentPassword" type="password" minlength="8" placeholder="Kamida 8 ta belgi" required></div>
+            <button class="btn btn-primary save-button" type="submit">O'quvchini saqlash <b>→</b></button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ADMIN TEACHERS -->
+      <div class="view-panel hidden" id="adminTeachers">
+        <div id="teacherClassesView">
+          <div class="content-card">
+            <div class="section-title"><div><h3>Sinflar</h3><p>Kerakli sinfni tanlang.</p></div></div>
+            <div class="stats-grid teacher-class-grid">
+              <button class="stat-card class-card" onclick="openTeacherClass(5)"><span class="stat-icon blue">5</span><small>SINF</small><strong>5-sinf</strong><p>Sinf bo'limini ochish →</p></button>
+              <button class="stat-card class-card" onclick="openTeacherClass(6)"><span class="stat-icon blue">6</span><small>SINF</small><strong>6-sinf</strong><p>Sinf bo'limini ochish →</p></button>
+              <button class="stat-card class-card" onclick="openTeacherClass(7)"><span class="stat-icon blue">7</span><small>SINF</small><strong>7-sinf</strong><p>Sinf bo'limini ochish →</p></button>
+              <button class="stat-card class-card" onclick="openTeacherClass(8)"><span class="stat-icon blue">8</span><small>SINF</small><strong>8-sinf</strong><p>Sinf bo'limini ochish →</p></button>
+              <button class="stat-card class-card" onclick="openTeacherClass(9)"><span class="stat-icon blue">9</span><small>SINF</small><strong>9-sinf</strong><p>Sinf bo'limini ochish →</p></button>
+              <button class="stat-card class-card" onclick="openTeacherClass(10)"><span class="stat-icon blue">10</span><small>SINF</small><strong>10-sinf</strong><p>Sinf bo'limini ochish →</p></button>
+              <button class="stat-card class-card" onclick="openTeacherClass(11)"><span class="stat-icon blue">11</span><small>SINF</small><strong>11-sinf</strong><p>Sinf bo'limini ochish →</p></button>
+            </div>
+          </div>
+          <div class="content-card"><div class="section-title"><div><h3>Ustozlar ro'yxati</h3><p>Platformadagi barcha ustozlar</p></div></div><div id="teacherList"><p class="muted">Ustozlar yuklanmoqda...</p></div></div>
+        </div>
+
+        <div id="teacherClassDetail" class="hidden">
+          <div class="content-card">
+            <button class="back-link teacher-back-button" onclick="backToTeacherClasses()">← Barcha sinflar</button>
+            <div class="section-title"><div><h3 id="teacherClassTitle">5-sinf</h3><p>Tanlangan sinf bo'limi</p></div></div>
+            <div class="teacher-inner-card"><h3>Ustozlar</h3><div id="classTeacherList"><p class="muted">Ustozlar yuklanmoqda...</p></div></div>
+            <div class="teacher-inner-card"><h3>Materiallar</h3><div id="classMaterials"><p class="muted">Hozircha materiallar mavjud emas.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-panel hidden" id="adminSubjects"><div class="content-card"><h3>Fanlar</h3><p>Fanlarni boshqarish bo'limi.</p></div></div>
+      <div class="view-panel hidden" id="adminTests"><div class="content-card"><h3>Testlar</h3><p>Testlarni boshqarish bo'limi.</p></div></div>
+      <div class="view-panel hidden" id="adminSettings"><div class="content-card"><h3>Sozlamalar</h3><p>Platforma sozlamalari.</p></div></div>
+    </main>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
 </body>
 </html>
